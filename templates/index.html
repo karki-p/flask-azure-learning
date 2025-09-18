@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flask Azure Learning</title>
+    <style>
+        :root {
+            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+            color-scheme: light dark;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(160deg, #f4f7fb, #d9e6ff);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 1rem 2rem;
+        }
+
+        main {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(50, 70, 120, 0.12);
+            margin: 0 auto 3rem;
+            padding: 2.5rem 2rem;
+            width: min(600px, 90vw);
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+            font-size: clamp(2rem, 6vw, 2.75rem);
+            color: #1a2a6c;
+        }
+
+        p.lead {
+            margin: 0 auto;
+            font-size: 1.15rem;
+            color: #40536a;
+            line-height: 1.6;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        li {
+            background: #f5f7ff;
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(26, 42, 108, 0.08);
+        }
+
+        li span {
+            display: block;
+            font-weight: 600;
+            color: #1a2a6c;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 1.5rem;
+            text-align: center;
+            color: rgba(64, 83, 106, 0.75);
+        }
+
+        a.api-link {
+            color: #1a2a6c;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a.api-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ message }}</h1>
+        <p class="lead">This is a friendly landing page for the sample application running on Flask and ready for Azure.</p>
+    </header>
+    <main>
+        <h2>Sample Users</h2>
+        {% if users %}
+        <ul>
+            {% for user in users %}
+            <li>
+                <span>{{ user.name }}</span>
+                <small>User ID: {{ user.id }}</small>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No users to display yet. Check back soon!</p>
+        {% endif %}
+        <p style="margin-top:2rem;">Need data instead? Try the <a class="api-link" href="{{ url_for('get_users') }}">users API endpoint</a>.</p>
+    </main>
+    <footer>
+        Powered by Flask � Deployed with care to Azure
+    </footer>
+</body>
+</html>
